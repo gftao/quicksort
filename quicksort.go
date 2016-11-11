@@ -21,7 +21,7 @@ func main() {
 }
 
 func pfarry (list []int){
-	//var total = TOT
+
 	len := int(1)
 	for total := TOT; total > 0; total /= 10 {
 		len ++
