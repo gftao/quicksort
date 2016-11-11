@@ -3,12 +3,15 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 )
 
 var TOT = int(20)
 
 func main() {
 	var arry []int
+	rand.Seed(time.Now().UnixNano())
+
 	for i:= 0; i < TOT; i++{
 		arry = append(arry, rand.Intn(TOT))
 	}
