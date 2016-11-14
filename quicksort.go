@@ -9,8 +9,9 @@ import (
 var TOT = int(20)
 
 func main() {
+	startt := time.Now().UnixNano()
 	var arry []int
-	rand.Seed(time.Now().UnixNano())
+	rand.Seed(startt)//time.Now().UnixNano())
 
 	for i:= 0; i < TOT; i++{
 		arry = append(arry, rand.Intn(TOT))
@@ -21,6 +22,11 @@ func main() {
 	fmt.Println()
 	fmt.Println("After sort arry:")
 	pfarry(arry)
+	endt := time.Now().UnixNano()
+
+	//输出执行时间，单位为毫秒。
+	fmt.Println("\nDuring:", (endt - startt) / 1000000)
+
 }
 
 func pfarry (list []int){
@@ -42,7 +48,6 @@ func  quicksort(list []int)  {
 	b := 0;
 	e := l - 1
 	key := list[e/2]
-
 	for {
 		for list[b] < key{
 			b++
@@ -50,13 +55,14 @@ func  quicksort(list []int)  {
 		for list[e] > key {
 			e--
 		}
+
 		if b >= e {
 			break
 		}
 		swap(list, b, e)
-
 		b++;e--		//每次较换后向后取值，否则（切片中有相同值时）会出现死循环
 	}
+
 	quicksort(list[:b])
 	quicksort(list[e+1:])
 }
